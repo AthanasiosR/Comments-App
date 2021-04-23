@@ -1,0 +1,6 @@
+Werkzeug==0.16.1
+Flask==0.12.2
+flask-cors
+requests==2.18.4
+mysqlclient
+python-dotenv
