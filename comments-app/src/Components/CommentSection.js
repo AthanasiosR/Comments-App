@@ -1,20 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 
-function CommentSection ({fullName, userComment, emailAddress}) {
+function CommentSection ({fullName, userComment, emailAddress, comments}) {
+
+    const convTime = (UNIX_timestamp) => {
+        let a = new Date(UNIX_timestamp * 1000);
+        let year = a.getFullYear();
+        let month = a.getMonth() + 1;
+        let date = a.getDate();
+        let time = year + '-' + month + '-' + date ;
+
+        date = new Date(time);
+  
+        if ( isNaN( date .getTime() ) ) 
+        {
+            return time;
+        }
+        else
+        {
+            let month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+
+            let day = date.getDate();
+            
+            if(day < 10)
+            {
+                day = "0"+day;
+            }
+        
+            return    day  + " " +month[date.getMonth()] + " " + date.getFullYear();
+        }
+    }
 
     return (
         <>
-        <PeoplesComments>
+        {comments.map((item, index) => (
+            <>
+            <PeoplesComments>
             <CommentDetailsLeft>
-                {/* <a href="mailto:${emailAddress}">{fullName}</a> */}
-                {fullName}
+                {convTime(item.time)} <br></br> by {""}
+                <a href={`mailto:${item.email}`}>{item.name}</a>
             </CommentDetailsLeft>
             <CommentDetailsRight>
-                {userComment}
+                {item.comment}
             </CommentDetailsRight>
-
-        </PeoplesComments>
+            </PeoplesComments>
+            </>
+        ))}
         </>
     );
 };
@@ -22,11 +65,14 @@ function CommentSection ({fullName, userComment, emailAddress}) {
 const PeoplesComments = styled.div`
 width: 95%;
 margin: 10px auto 10px auto;
-padding: 10px;
+padding: 20px;
 height: auto;
-border: black solid 2px;
+border: solid 2px;
 border-radius: 10px;
 display: flex;
+background-color: #E0017A;
+color: white;
+overflow-y: hidden;
 `;
 
 const CommentDetailsLeft = styled.div`

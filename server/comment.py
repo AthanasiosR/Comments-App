@@ -35,7 +35,7 @@ class Comment(object):
             self.db.rollback()
     
     def get_comments(self):
-        query = 'SELECT * FROM comments ORDER BY time ASC;'
+        query = 'SELECT * FROM comments ORDER BY time DESC;'
         print("executing query :: ", query)
         comments = []
         try:
