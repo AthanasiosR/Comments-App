@@ -1,3 +1,4 @@
 # Comments-App
 
-Comments App built using React.js, Python, and MySQL
+Real-time commenting app built using React.Js (Front-End), Python (Back-End), and MySQL (Database).
+
