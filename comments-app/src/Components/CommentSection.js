@@ -76,11 +76,12 @@ overflow-y: hidden;
 `;
 
 const CommentDetailsLeft = styled.div`
-width: 30%;
+width: 20%;
 text-align: center;
 `;
 
 const CommentDetailsRight = styled.div`
+width: 80%;
 `;
 
 export default CommentSection;
